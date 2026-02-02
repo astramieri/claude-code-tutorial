@@ -21,4 +21,4 @@ claude
 /init
 ```
 
-Pro tip: The generated file is a starting point - review and customize it with your actual workflows, domain-specific terms, and any nuances Claude missed. Think of it as living documentation that both humans and AI need to understand your project.
+**Pro tip**: The generated file is a starting point. Review and customize it with your actual workflows, domain-specific terms, and any nuances Claude missed. Think of it as living documentation that both humans and AI need to understand your project.
