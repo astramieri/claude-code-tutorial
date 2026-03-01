@@ -6,6 +6,7 @@ A hands-on exploration of Claude Code, Anthropic's terminal-based AI coding agen
 
 - [`/init` command](./docs/init.md)
 - [Memory Scopes](./docs/memory.md)
+- [Context](./docs/context.md)
 
 ## YouTube Videos
 
