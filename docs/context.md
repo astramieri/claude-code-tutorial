@@ -54,7 +54,7 @@ Multiple `CLAUDE.md` files can coexist and all load at session start:
 
 | Command | What it does |
 |---------|-------------|
-| `/context` | Shows current context usage as a colored grid |
+| `/context` | Shows current context usage as a colored grid (CLI only — VSCode shows a usage indicator in the prompt box) |
 | `/memory` | Lists all loaded CLAUDE.md/rules files; toggle auto memory on/off |
 | `/compact [instructions]` | Summarizes conversation, optionally with focus instructions |
 | `/clear` | Resets the context window entirely (aliases: `/reset`, `/new`) |
