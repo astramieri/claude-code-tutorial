@@ -59,3 +59,32 @@ Multiple `CLAUDE.md` files can coexist and all load at session start:
 | `/compact [instructions]` | Summarizes conversation, optionally with focus instructions |
 | `/clear` | Resets the context window entirely (aliases: `/reset`, `/new`) |
 | `/exit` | Exits Claude Code (aliases: `/quit`, `Ctrl+D`) |
+| `Esc Esc` | Opens the rewind menu (same as `/rewind` or `/checkpoint`) |
+
+### Rewind Example
+
+Imagine you ask Claude to refactor a function and the result is worse than the original:
+
+```
+You:    "Refactor the login function to be cleaner"
+Claude: [rewrites it — but you don't like the result]
+
+You:    [press Esc Esc  —or—  type /rewind]
+        → A scrollable list appears showing all your previous prompts
+        → You select the point before the refactor
+        → You choose what to restore:
+            1. Restore code + conversation  ← full undo
+            2. Restore conversation only    ← keep current code
+            3. Restore code only            ← keep current conversation
+            4. Summarize from here          ← compress context from this point
+            5. Never mind                   ← cancel
+```
+
+> **Note:** Checkpoints track **file edits only** — bash command side-effects (e.g. files created by a shell command) are not reverted. Checkpoints persist across sessions and are auto-cleaned after 30 days.
+>
+> **VSCode extension:** `/rewind` and `Esc Esc` are terminal CLI features. In the IDE, hover over any message in the Claude Code panel — a rewind button appears with three options:
+> - **Fork conversation from here** — new conversation branch, code unchanged
+> - **Rewind code to here** — revert file changes, conversation kept
+> - **Fork conversation and rewind code** — both
+
+This is useful when Claude takes a wrong turn and you want to go back and try a different approach, without starting the whole session over with `/clear`.
