@@ -58,3 +58,4 @@ Multiple `CLAUDE.md` files can coexist and all load at session start:
 | `/memory` | Lists all loaded CLAUDE.md/rules files; toggle auto memory on/off |
 | `/compact [instructions]` | Summarizes conversation, optionally with focus instructions |
 | `/clear` | Resets the context window entirely (aliases: `/reset`, `/new`) |
+| `/exit` | Exits Claude Code (aliases: `/quit`, `Ctrl+D`) |
