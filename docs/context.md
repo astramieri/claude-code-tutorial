@@ -9,7 +9,8 @@
 - Conversation history (all messages back and forth)
 - File contents Claude reads during the session
 - Shell command outputs
-- `CLAUDE.md` and project rules
+- `CLAUDE.md` files at all levels (org, user, project, local)
+- Auto memory (`MEMORY.md` — first 200 lines loaded at session start)
 - Tool definitions from MCP servers
 - System instructions and configuration
 
@@ -19,15 +20,32 @@ Claude Code manages context automatically:
 
 1. **Clears older tool outputs first** — command results and file reads from early in the session are discarded first
 2. **Summarizes conversation** — earlier exchanges are compressed while preserving key code and decisions
-3. **CLAUDE.md always survives** — persistent rules in `CLAUDE.md` are reloaded every request, so they outlast conversation compaction
+3. **CLAUDE.md always survives** — all `CLAUDE.md` files are reloaded every request, so they outlast conversation compaction
+4. **Auto memory survives** — `MEMORY.md` is reloaded from disk after compaction as well
 
 > This is why putting rules in `CLAUDE.md` is better than repeating instructions in chat — they survive context resets automatically.
 
+## CLAUDE.md Levels
+
+Multiple `CLAUDE.md` files can coexist and all load at session start:
+
+| Scope | Location |
+|-------|----------|
+| Organization | `/etc/claude-code/CLAUDE.md` (Linux) |
+| User (global) | `~/.claude/CLAUDE.md` |
+| Project | `./CLAUDE.md` or `./.claude/CLAUDE.md` |
+| Local (per-machine) | `./CLAUDE.local.md` |
+
+## A Note on Context Quality
+
+> Too much unnecessary context can lead to **less accurate results**. Irrelevant information dilutes the signal, diffuses attention, and can push out genuinely useful content. Focused, relevant context consistently outperforms large, cluttered context.
+
 ## Tips for Managing Context
 
-- **Keep `CLAUDE.md` lean** — under ~200 lines; include only what Claude would genuinely forget
+- **Keep `CLAUDE.md` lean** — include only what Claude would genuinely forget
+- **Keep `MEMORY.md` concise** — lines after 200 are truncated at session load
 - **Use `/clear` between unrelated tasks** — a fresh context outperforms a long, cluttered one
-- **Use `/compact`** to manually summarize when approaching limits
+- **Use `/compact [instructions]`** to manually summarize; pass focus instructions to control what's preserved
 - **Delegate to subagents** — they run in separate context windows and return only summaries, keeping your main session clean
 - **Disconnect unused MCP servers** — their tool definitions consume context on every request
 - **Be specific upfront** — precise prompts reduce back-and-forth corrections that bloat context
@@ -36,6 +54,7 @@ Claude Code manages context automatically:
 
 | Command | What it does |
 |---------|-------------|
-| `/context` | Shows current context usage breakdown |
-| `/clear` | Resets the context window entirely |
-| `/compact` | Manually triggers context summarization |
+| `/context` | Shows current context usage as a colored grid |
+| `/memory` | Lists all loaded CLAUDE.md/rules files; toggle auto memory on/off |
+| `/compact [instructions]` | Summarizes conversation, optionally with focus instructions |
+| `/clear` | Resets the context window entirely (aliases: `/reset`, `/new`) |
