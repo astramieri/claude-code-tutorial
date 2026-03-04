@@ -9,8 +9,8 @@ This is a documentation-only learning repository following The Net Ninja's Claud
 ## Docs
 
 - `docs/init.md` — What `/init` does, when to re-run it, and caveats about overwriting manual edits
-- `docs/memory.md` — The three CLAUDE.md memory scopes (project, local, global) and loading order; notes that `CLAUDE.local.md` is **deprecated** in newer Claude Code versions (use `~/.claude/CLAUDE.md` for personal preferences instead)
-- `docs/context.md` — How the context window works, what survives compaction, key commands (`/clear`, `/compact`, `/context`, `/memory`, `/rewind`)
+- `docs/memory.md` — The four CLAUDE.md scopes (org, global, project, local), loading order, and the deprecation of `CLAUDE.local.md` in favour of `~/.claude/CLAUDE.md`
+- `docs/context.md` — What fills the context window, what survives compaction (CLAUDE.md and MEMORY.md are always reloaded), key commands (`/clear`, `/compact`, `/context`, `/memory`, `/rewind`), and the VSCode vs CLI differences for rewind/checkpoint
 
 ## Conventions
 
