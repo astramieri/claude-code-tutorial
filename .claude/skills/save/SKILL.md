@@ -1,7 +1,6 @@
 ---
 name: save
 description: Commit all pending changes and push to origin
-disable-model-invocation: true
 allowed-tools: Bash(git *)
 ---
 
