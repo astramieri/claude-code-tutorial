@@ -1,7 +1,6 @@
 ---
 name: save
 description: Commit all pending changes and push to origin
-allowed-tools: Bash(git *)
 ---
 
 Commit all pending changes and push them to origin using these steps:
