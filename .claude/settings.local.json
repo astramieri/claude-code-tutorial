@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(test -f \"c:/Users/angel/github/astramieri/claude-code-tutorial/docs/tools-and-permission.md\")",
-      "Bash(test -f \"c:/Users/angel/github/astramieri/claude-code-tutorial/docs/planning-and-thinking.md\")"
+      "Bash(test -f \"c:/Users/angel/github/astramieri/claude-code-tutorial/docs/planning-and-thinking.md\")",
+      "Bash(test -f \"c:/Users/angel/github/astramieri/claude-code-tutorial/docs/slash-commands.md\")"
     ]
   }
 }
