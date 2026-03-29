@@ -14,6 +14,7 @@ This is a documentation-only learning repository following The Net Ninja's Claud
 - `docs/tools-and-permission.md` — Built-in tools, permission modes (`default`, `acceptEdits`, `plan`, `dontAsk`, `bypassPermissions`), permission rule syntax, and `/permissions` command
 - `docs/planning-and-thinking.md` — Plan Mode, effort levels, `opusplan` hybrid model alias, and the four-phase explore→plan→implement→commit workflow
 - `docs/slash-commands.md` — All slash commands, custom skills vs legacy commands, skill directory structure, and the `SKILL.md` format
+- `docs/mcp-servers.md` — What MCP servers are, scope levels (local/project/user), adding servers via CLI, transport types, and permission rules
 
 ## Conventions
 
