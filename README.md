@@ -11,6 +11,7 @@ A hands-on exploration of Claude Code, Anthropic's terminal-based AI coding agen
 - [Planning and Thinking](./docs/planning-and-thinking.md)
 - [Slash Commands](./docs/slash-commands.md)
 - [MCP Servers](./docs/mcp-servers.md)
+- [Subagents](./docs/subagents.md)
 
 ## YouTube Videos
 
