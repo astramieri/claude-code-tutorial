@@ -16,6 +16,7 @@ This is a documentation-only learning repository following The Net Ninja's Claud
 - `docs/slash-commands.md` — All slash commands, custom skills vs legacy commands, skill directory structure, and the `SKILL.md` format
 - `docs/mcp-servers.md` — What MCP servers are, scope levels (local/project/user), adding servers via CLI, transport types, and permission rules
 - `docs/subagents.md` — Subagents overview (in progress)
+- `docs/effective-workflows.md` — When to use commands, skills, or subagents; effort level guidance; decision matrix
 
 ## Conventions
 

@@ -10,6 +10,7 @@ Type `/` in a session to see all available commands. Type `/` followed by letter
 |---------|-------------|
 | `/init` | Generate a `CLAUDE.md` for the current project |
 | `/model [model]` | Switch model (`sonnet`, `opus`, `haiku`, `opusplan`) |
+| `/effort [level]` | Set reasoning effort: `low`, `medium`, `high`, `max` (Opus only) |
 | `/plan` | Enter Plan Mode (analyze without modifying files) |
 | `/clear` | Reset context window. Aliases: `/reset`, `/new` |
 | `/compact [instructions]` | Summarize conversation to free up context |
@@ -29,6 +30,7 @@ Type `/` in a session to see all available commands. Type `/` followed by letter
 | Command | Description |
 |---------|-------------|
 | `/diff` | Interactive viewer for uncommitted changes and per-turn diffs |
+| `/copy [N]` | Interactive selector to copy, paste, or write a code block from the conversation |
 | `/review` | Review a pull request (requires `gh` CLI) |
 | `/pr-comments [PR]` | Fetch comments from a GitHub PR |
 | `/rename [name]` | Rename the current session |

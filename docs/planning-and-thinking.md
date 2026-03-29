@@ -17,13 +17,21 @@ Recommended four-phase workflow:
 
 ## Extended Thinking & Effort Levels
 
-Effort levels control how much reasoning Claude applies before responding. Three levels are available: **low**, **medium**, **high**.
+Effort levels control how much reasoning Claude applies before responding. Four levels are available: **low**, **medium**, **high**, **max**.
 
-- Adjust during a session via `/model` (use arrow keys on the effort slider)
+| Level | When to use |
+|-------|-------------|
+| `low` | Simple tasks, quick feedback loops |
+| `medium` | Default — most coding tasks |
+| `high` | Complex debugging, architectural decisions |
+| `max` | Deepest reasoning; Opus 4.6 only, does not persist |
+
+- Adjust during a session with `/effort [level]` or via `/model` (effort slider)
 - Set permanently with `CLAUDE_CODE_EFFORT_LEVEL=low|medium|high`
 - Or configure `effortLevel` in `settings.json`
+- One-off deep reasoning: include "ultrathink" in your prompt for that turn only
 
-Supported on Opus 4.6 and Sonnet 4.6. Opus 4.6 defaults to **medium** for Max and Team subscribers.
+Supported on Opus 4.6 and Sonnet 4.6 (`max` is Opus 4.6 only). Opus 4.6 defaults to **medium** for Max and Team subscribers.
 
 ## `opusplan` Model Alias
 

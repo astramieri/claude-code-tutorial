@@ -1,27 +1,44 @@
 # Claude Code Memory Scopes
 
-## 3 Main Memory Levels
+## Memory Levels (Highest → Lowest Priority)
 
-1. `CLAUDE.md` (Project root)
-    - Committed to git → shared with team
-    - Use for: build commands, architecture, team standards
+1. **Managed policy** — organization-wide, set by IT/DevOps, cannot be excluded
+   - Windows: `C:\Program Files\ClaudeCode\CLAUDE.md`
+   - macOS: `/Library/Application Support/ClaudeCode/CLAUDE.md`
+   - Linux/WSL: `/etc/claude-code/CLAUDE.md`
 
-2. `CLAUDE.local.md` (Project root) ⚠️ **DEPRECATED**
-    - Auto git-ignored → personal only
-    - Use for: your preferences in THIS project
-    - **Note**: No longer supported in newer versions of Claude Code. Use `~/.claude/CLAUDE.md` for personal preferences instead.
+2. **Project** — `./CLAUDE.md` or `./.claude/CLAUDE.md`
+   - Committed to git → shared with team
+   - Use for: build commands, architecture, team standards
 
-3. `~/.claude/CLAUDE.md` (Home directory)
-    - Global → applies to ALL your projects
-    - Use for: universal personal preferences
+3. **User (global)** — `~/.claude/CLAUDE.md`
+   - Applies to ALL your projects
+   - Use for: universal personal preferences
 
-**Loading Order**:
-Global → Project → Local → Subdirectories (hierarchical)
+4. ~~`CLAUDE.local.md`~~ ⚠️ **DEPRECATED** — use `~/.claude/CLAUDE.md` instead
+
+**Loading Order**: Managed → User (global) → Project → Subdirectories (hierarchical)
 
 ### Quick Rules
 
-- Team conventions? → `CLAUDE.md` (commit it)
-- Personal project preferences? → `CLAUDE.local.md` (git-ignored)
-- Universal personal style? → `~/.claude/CLAUDE.md` (all projects)
+- Team conventions? → `./CLAUDE.md` (commit it)
+- Personal project preferences? → `~/.claude/CLAUDE.md` (global)
+- Universal personal style? → `~/.claude/CLAUDE.md` (same file, applies everywhere)
+
+### Path-Specific Rules (Advanced)
+
+For larger projects, organize rules into separate files in `.claude/rules/` with YAML frontmatter so they only load when Claude is editing matching files:
+
+```markdown
+---
+paths:
+  - "src/api/**/*.ts"
+---
+# API Development Rules
+- Use OpenAPI documentation
+- Include input validation
+```
+
+This reduces context overhead — rules load on demand, not at every request.
 
 **Bonus**: You can also create CLAUDE.md files in subdirectories for module-specific instructions. Claude recursively loads all relevant files when working in that area.

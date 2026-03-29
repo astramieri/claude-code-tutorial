@@ -12,9 +12,5 @@ A hands-on exploration of Claude Code, Anthropic's terminal-based AI coding agen
 - [Slash Commands](./docs/slash-commands.md)
 - [MCP Servers](./docs/mcp-servers.md)
 - [Subagents](./docs/subagents.md)
-
-## YouTube Videos
-
-- [Introduction & Setup](https://www.youtube.com/watch?v=SUysp3sJHbA)
-- [CLAUDE.md Files & /init](https://www.youtube.com/watch?v=i_OHQH4-M2Y)
+- [Effective Workflows](./docs/effective-workflows.md)
 
