@@ -71,3 +71,58 @@ You can also manage these via `/permissions` in the UI.
 ## Tool Access in Sessions
 
 MCP tools are loaded on demand (deferred) to keep context usage low. Reference MCP resources with `@` mentions (e.g. `@github:issue://123`) and use MCP prompts as slash commands: `/mcp__<server>__<prompt>`.
+
+---
+
+## Oracle Database & APEX: Spec-Driven Development
+
+### The Problem MCP Solves
+
+Without MCP, Claude is blind to your live database. You paste DDL manually, Claude guesses column names, and generated code drifts from reality.
+
+With MCP, Claude reads your **live schema** — tables, columns, constraints, packages — and generates code that is correct by construction.
+
+### Official Oracle MCP Server (SQLcl)
+
+Oracle ships an official MCP server as part of **SQLcl** (free CLI). It gives Claude direct access to:
+
+- Schema introspection (tables, views, sequences, indexes, packages)
+- Query execution against live data
+- Works with Oracle 19c → 23ai, on-prem and cloud (OCI, AWS, Azure, GCP)
+- All interactions logged in `DBTOOLS$MCP_LOG`
+
+```bash
+# Register in Claude Code after installing SQLcl
+claude mcp add --transport stdio oracle -- sql /nolog
+```
+
+### Spec-Driven Development Pattern
+
+Define a spec (Markdown or JSON) as the single source of truth. Claude reads your live schema via MCP and generates everything consistently.
+
+**Example spec:**
+
+```markdown
+# Feature: Customer Orders Module
+
+## Tables
+- ORDERS (order_id, customer_id FK, order_date, status, total_amount)
+- ORDER_LINES (line_id, order_id FK, product_id FK, qty, unit_price)
+
+## Business Rules
+- Status flow: DRAFT → SUBMITTED → APPROVED → SHIPPED
+- Total = sum of (qty * unit_price) across lines
+
+## Deliverables
+- DDL with constraints and sequences
+- PKG_ORDERS package (create_order, submit_order, approve_order, get_order)
+- APEX page: Order Entry form with tabular form for lines
+```
+
+Claude applies your naming conventions, error-handling patterns, and coding standards automatically — no boilerplate, no drift.
+
+### Key References
+
+- [Oracle SQLcl MCP Docs](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.2/sqcug/using-oracle-sqlcl-mcp-server.html)
+- [Oracle MCP GitHub](https://github.com/oracle/mcp)
+- [MCP Server Registry](https://registry.modelcontextprotocol.io/)
