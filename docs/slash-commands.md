@@ -33,11 +33,21 @@ Type `/` in a session to see all available commands. Type `/` followed by letter
 | `/pr-comments [PR]` | Fetch comments from a GitHub PR |
 | `/rename [name]` | Rename the current session |
 | `/resume [session]` | Resume a past session by name or ID |
-| `/fork [name]` | Fork the current conversation at this point |
+| `/branch [name]` | Create a branch of the current conversation. Alias: `/fork` |
 | `/skills` | List available custom skills (see [Custom Skills](#custom-skills) below) |
 | `/vim` | Toggle Vim editing mode |
 | `/theme` | Change the color theme |
 | `/sandbox` | Toggle sandbox mode (OS-level isolation) |
+| `/fast [on\|off]` | Toggle fast mode |
+| `/btw <question>` | Ask a quick side question without adding it to conversation history |
+| `/security-review` | Analyze pending changes for security vulnerabilities |
+| `/doctor` | Diagnose installation and settings issues |
+| `/insights` | Generate a report on Claude Code sessions |
+| `/stats` | Visualize usage and session history |
+| `/schedule` | Create and manage cloud scheduled tasks |
+| `/release-notes` | View the changelog |
+| `/remote-control` | Enable remote control from claude.ai. Alias: `/rc` |
+| `/reload-plugins` | Reload plugins without restarting |
 
 ## Custom Skills
 
@@ -54,6 +64,8 @@ Skills are the recommended approach going forward, as they add more capabilities
 | Claude auto-invokes | No | Yes (via `description` field) |
 | Invocation control | No | Yes (`disable-model-invocation`) |
 | Subagent execution | No | Yes (`context: fork`) |
+| Tool restrictions | No | Yes (`allowed-tools`) |
+| Path-specific activation | No | Yes (`paths`) |
 
 ### Minimal skill example
 
@@ -72,7 +84,7 @@ Fix GitHub issue $ARGUMENTS following our coding standards.
 1. Read the issue, implement the fix, write tests, create a commit.
 ```
 
-Invoke with `/fix-issue 123`. The `$ARGUMENTS` placeholder is replaced with `123`.
+Invoke with `/fix-issue 123`. The `$ARGUMENTS` placeholder is replaced with `123`. You can also use `$ARGUMENTS[N]` or `$N` to reference individual arguments, and `${CLAUDE_SKILL_DIR}` to reference the skill's directory.
 
 ### Skill locations
 
